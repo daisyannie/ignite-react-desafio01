@@ -13,11 +13,13 @@ interface Task {
 export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
+  const [seqIdTasks, setSeqIdTasks] = useState(0);
 
   function handleCreateNewTask() {
+    setSeqIdTasks(seqIdTasks + 1)
     if (newTaskTitle) {
       const newTask = {
-        id: tasks.length + 1,
+        id: seqIdTasks,
         title: newTaskTitle,
         isComplete: false
       } as Task
